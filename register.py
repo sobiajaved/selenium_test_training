@@ -13,24 +13,22 @@ class RegisterPage(object):
         WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'button.action.action-primary.action-update.js-register.register-button')))
         return True
 
-    def randmfuntest(self):
-        first_name = ['abc', 'aac', 'aaa', 'asa', 'qwe', 'wwd', 'asg']
-        last_name = ['atbc', 'uaac', 'jaaa', 'oasa', 'dqwe', 'ewwd', 'aksg']
-        for num in range(50):
-            first = random.choice(first_name)
-            last = random.choice(last_name)
-            email = first.lower() + last.lower() + '@test.com'
-            return email
 
 
     def fill_form(self):
-        email = self.randmfuntest()
+        first_name = ['abc', 'aac', 'aaa', 'asa', 'qwe', 'wwd', 'asg', 'erew']
+        last_name = ['atbc', 'uaac', 'jaaa', 'oasa', 'dqwe', 'ewwd', 'aksg']
+        for num in range(100):
+            first = random.choice(first_name)
+            last = random.choice(last_name)
+            email = first.lower() + last.lower() + '@test.com'
+            reg_name = first.lower() + last.lower()
         email_elem = self.driver.find_element_by_css_selector('#register-email')
         email_elem.send_keys(email)
         name_elem = self.driver.find_element_by_css_selector('#register-name')
         name_elem.send_keys('sss')
         rname_elem = self.driver.find_element_by_css_selector('#register-username')
-        rname_elem.send_keys('sssaaaafff')
+        rname_elem.send_keys(reg_name)
         pwd_elem = self.driver.find_element_by_css_selector('#register-password')
         pwd_elem.send_keys('1234567a')
         select_elem = Select(self.driver.find_element_by_css_selector('#register-country'))
